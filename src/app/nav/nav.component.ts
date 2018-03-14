@@ -20,10 +20,11 @@ export class NavComponent implements OnInit {
   }
 
   postTutorial(){
-    console.log('hello')
+    // console.log('hello')
     if(!this.auth.isLoggedIn){
       return this.router.navigateByUrl('/login')
     }
+    return this.router.navigateByUrl('/post')
   }
 
 }

@@ -21,7 +21,8 @@ export class PostService {
   }
 
   insertPost(post: Post) {
-    let headers = new Headers({ 'Content-Type': 'application/json'});
+    const token = localStorage.getItem('token')
+    let headers = new Headers({ 'Content-Type': 'application/json', "Authorization": token});
     let options = new RequestOptions({ headers: headers });
 
     return this._http.post('/api/posts', JSON.stringify(post), options) 
