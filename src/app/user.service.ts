@@ -22,4 +22,8 @@ export class UserService {
         return result.json()
       });
   }
+
+  logOut(){
+    this.auth.logOut()
+  }
 }

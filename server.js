@@ -32,6 +32,14 @@ app.get('*', (req, res) => {
 const port = config.port;
 app.set('port', port);
 
+app.use((err, req, res, next) => {
+  if(err.name === "UnauthorizedError"){
+    res.status(401).json({
+      message: "Unauthorized to make this request"
+    })
+  }
+})
+
 // Create the HTTP Server
 const server = http.createServer(app);
 

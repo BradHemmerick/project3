@@ -13,6 +13,11 @@ export class AuthService {
     this.setUser(token)
    }
 
+   logOut(){
+     localStorage.removeItem("token")
+    this.isLoggedIn = false;
+    }
+
   setUser(token) {
     if(token){
       const user = this.helper.decodeToken(token)

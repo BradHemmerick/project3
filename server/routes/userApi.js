@@ -18,7 +18,7 @@ router.post('/signup', (req,res,next) => {
             });
         } else {
             user.save((err, newUser) => {
-                res.json(newUser.toJSON())
+                res.json(newUser.toAuthJSON())
             });
         }
     });
@@ -33,7 +33,7 @@ router.post('/login', (req,res,next) => {
                 message: 'Email or Password incorrect'
             })
         }
-        res.json(user.toJSON())
+        res.json(user.toAuthJSON())
     })
 })
 

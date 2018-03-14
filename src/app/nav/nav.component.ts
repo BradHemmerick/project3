@@ -14,6 +14,11 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut(){
+    this.auth.logOut()
+    return this.router.navigateByUrl('/login')
+  }
+
   postTutorial(){
     console.log('hello')
     if(!this.auth.isLoggedIn){

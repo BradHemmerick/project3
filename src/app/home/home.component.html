@@ -5,6 +5,7 @@
       <div class="row">
         <div class="columns small-12 large-10">
           <a routerLink="/details/{{ post._id }}" class="post-title">{{ post.title }}</a>
+          <span>{{ post.owner?.username }}</span>
         </div>
         <div class="columns small-12 large-2 show-for-large">
           <a href="#" target="_blank" class="external">

@@ -13,7 +13,7 @@ const UserSchema = new Schema({
   created: { type: Date, default: Date.now },
 });
 
-UserSchema.methods.toJSON = function() {
+UserSchema.methods.toAuthJSON = function() {
   console.log('hello')
  const user = this
  return{
