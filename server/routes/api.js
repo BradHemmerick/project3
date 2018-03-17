@@ -3,7 +3,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const post = require('../models/post');
 const config = require('../../config')
-
+const User = mongoose.model("User");
+const loginRequired = require('./auth')
+// console.log(loginRequired)
 const db = config.database;
 
 mongoose.Promise = global.Promise;
@@ -16,6 +18,10 @@ mongoose.connect(db, function(err) {
 router.get('/posts', function(req, res) {
     console.log('Requesting posts');
     post.find({})
+        .populate({
+            path: "owner", 
+            select: "username"
+        })
         .exec(function(err, posts) {
             if (err) {
                 console.log('Error getting the posts');
@@ -37,18 +43,26 @@ router.get('/details/:id', function(req, res) {
         });
 });
 
-router.post('/posts', function(req, res) {
+router.post('/posts', loginRequired, function(req, res) {
     console.log('Posting a post');
-    var newPost = new post();
-    newPost.title = req.body.title;
-    newPost.url = req.body.url;
-    newPost.description = req.body.description;
-    newPost.save(function(err, addedPost) {
-        if (err) {
-            console.log('Error inserting the post');
-        } else {
-            res.json(addedPost);
+    User.findOne({_id: req.payload.id},(err, user) => {
+        if(err || !user){
+            return res.status(404).json({
+                message: "user not found"
+            })
         }
+        var newPost = new post();
+        newPost.title = req.body.title;
+        newPost.url = req.body.url;
+        newPost.description = req.body.description;
+        newPost.owner = user._id
+        newPost.save(function(err, addedPost) {
+            if (err) {
+                console.log('Error inserting the post');
+            } else {
+                res.json(addedPost);
+            }
+        });
     });
 });
 
