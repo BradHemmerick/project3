@@ -9,14 +9,16 @@ label {
 }
 
 input[type='text'],textarea {
-    background:none;
-    border: 1px solid #796161;
+    background: none;
+    opacity: 1;
+    border: 2.5px solid rgb(17, 59, 73);
     padding:22px 15px;
     color:$text-color;
 }
 
 textarea {
-    min-height:70px;
+    min-height:150px;
+    height: 250px;
 }
 
 .filled {
