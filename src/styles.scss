@@ -33,8 +33,8 @@ a:hover {
 }
 
 .cta-btn:hover {
-    background:$accent-color;
-    color:$bg;
+    color:white;
+    border: 1px solid white;
 }
 
 h1 {
@@ -57,7 +57,7 @@ h1 {
     fill: $accent-color;
 }
 .arrow {
-    fill: $bg;
+    fill: white;
 }
 
 #group {
@@ -87,7 +87,7 @@ h1 {
         fill: $accent-color;
     }
     100% {
-        fill: $bg;
+        fill: white;
     }
 }
 

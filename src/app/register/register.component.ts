@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../animations';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
