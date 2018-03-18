@@ -6,23 +6,23 @@
   <form (ngSubmit)="register()">
 
     <div class="row columns">
-      <label>Username
+      <label>Username*
         <input name="UserName" type="text" [(ngModel)]="user.username" class="form-control">
       </label>
     </div>
 
     <div class="row columns">
-      <label>Email
+      <label>Email*
         <input name="Email" type="email" [(ngModel)]="user.email" class="form-control">
       </label>
     </div>
 
     <div class="row columns">
-      <label>Password
+      <label>Password*
         <input name="Password" type="password" [(ngModel)]="user.password" class="form-control">
       </label>
       <input type="submit" class="cta-btn filled" value="Register">
-
+      <label>* is required</label>
     </div>
   </form>
 </div>
