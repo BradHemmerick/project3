@@ -1,6 +1,6 @@
 <div class="body-blur">
   <div class="row columns">
-    <h1>Register</h1>
+    <h1>Register     <span class="smalltext">   ( * Is Required )</span></h1>
   </div>
 
   <form (ngSubmit)="register()">
@@ -22,7 +22,6 @@
         <input name="Password" type="password" [(ngModel)]="user.password" class="form-control">
       </label>
       <input type="submit" class="cta-btn filled" value="Register">
-      <label>* is required</label>
     </div>
   </form>
 </div>
