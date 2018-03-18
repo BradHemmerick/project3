@@ -22,6 +22,7 @@ router.get('/posts', function(req, res) {
             path: "owner", 
             select: "username"
         })
+        .sort({createdAt: -1})
         .exec(function(err, posts) {
             if (err) {
                 console.log('Error getting the posts');

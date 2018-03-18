@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../animations';
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   public user = {email: "", password: "", username: ""}
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -22,7 +23,10 @@ export class RegisterComponent implements OnInit {
   register(){
     console.log(this.user)
     this.userService.register(this.user)
-    .subscribe(user=> this.router.navigateByUrl('/'))
+    .subscribe(res=> {
+      this.auth.setUser(res.token)
+      this.router.navigateByUrl('/')
+    })
   }
 
 }

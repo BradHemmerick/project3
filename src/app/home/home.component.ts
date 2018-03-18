@@ -17,8 +17,12 @@ export class HomeComponent implements OnInit {
   constructor(private _postService: PostService) { }
 
   ngOnInit() {
+    console.log('aksoaso')
     this._postService.getPosts()
-      .subscribe(res=> this.posts = res);
+      .subscribe(res=> {
+        this.posts = res
+        // this._postService.posts.next(res)
+      });
   }
 
 }

@@ -35,7 +35,9 @@ export class PostComponent implements OnInit {
   addPost(post: Post) {
     this._postService.insertPost(post)
       .subscribe(newPost => {
-        this.posts.push(newPost);
+        console.log([...this.posts])
+        this.posts.splice(0,0,newPost);
+        console.log([...this.posts])
         this.router.navigateByUrl('/');
       })
   }
