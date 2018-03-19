@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   public user = {email: "", password: ""}
 
+  public errorMess = false;
+
   constructor(private userService: UserService,private router: Router, private auth: AuthService) { }
 
 
@@ -22,12 +24,18 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.errorMess = false;
     console.log(this.user)
     this.userService.login(this.user)
     .subscribe(res=> {
       console.log(res.token)
       this.auth.setUser(res.token)
       this.router.navigateByUrl('/')
+    }, (err) =>{
+      console.log(err)
+      if(err.status === 403){
+        this.errorMess = true;
+      }
     })
   }
 }
