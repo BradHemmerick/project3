@@ -6,7 +6,7 @@
     <form (ngSubmit)="login()">
   
       <div class="row columns">
-        <p *ngIf="errorMess">Email or Password is incorrect</p>
+        <p class="whiteplz" *ngIf="errorMess">Email or Password is incorrect</p>
         <label>Email
           <input name="Email" type="email"[(ngModel)]="user.email" class="form-control">
         </label>
