@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    console.log(this.user)
+    // console.log(this.user)
     this.userService.register(this.user)
     .subscribe(res=> {
       this.auth.setUser(res.token)

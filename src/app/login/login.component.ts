@@ -25,14 +25,14 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.errorMess = false;
-    console.log(this.user)
+    // console.log(this.user)
     this.userService.login(this.user)
     .subscribe(res=> {
-      console.log(res.token)
+      // console.log(res.token)
       this.auth.setUser(res.token)
       this.router.navigateByUrl('/')
     }, (err) =>{
-      console.log(err)
+      // console.log(err)
       if(err.status === 403){
         this.errorMess = true;
       }
